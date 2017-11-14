@@ -233,6 +233,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginBtnPressed:" destination="4VB-hQ-ipU" eventType="touchUpInside" id="7ZN-IP-mxq"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiw-wg-lEq">
                                         <rect key="frame" x="0.0" y="57" width="294" height="30"/>
@@ -308,6 +311,8 @@
                         <viewLayoutGuide key="safeArea" id="SG0-9O-XNv"/>
                     </view>
                     <connections>
+                        <outlet property="passwordTxt" destination="3oU-KK-62b" id="mfK-vM-ILP"/>
+                        <outlet property="usernameTxt" destination="ZNA-hP-Mkn" id="Twf-g4-gx6"/>
                         <segue destination="usc-WA-Se3" kind="show" identifier="toCreateAccount" action="showDetailViewController:sender:" id="cDh-rY-mu5"/>
                     </connections>
                 </viewController>
