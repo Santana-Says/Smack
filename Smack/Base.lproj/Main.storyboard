@@ -343,7 +343,7 @@
                                         <rect key="frame" x="0.0" y="62" width="294" height="20"/>
                                         <color key="textColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DiY-pP-Db1">
                                         <rect key="frame" x="0.0" y="102" width="294" height="2"/>
@@ -375,9 +375,17 @@
                                     <constraint firstAttribute="height" constant="50" id="LhO-04-a5u"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="Creat Account">
                                     <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createAccountPressed:" destination="usc-WA-Se3" eventType="touchUpInside" id="m7i-hI-gTM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhJ-4e-Kec">
                                 <rect key="frame" x="75.333333333333343" y="80" width="263.66666666666663" height="36"/>
@@ -417,6 +425,9 @@
                                         <state key="normal" title="Choose avatar">
                                             <color key="titleColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pickAvatarPressed:" destination="usc-WA-Se3" eventType="touchUpInside" id="l9f-E0-8yR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qu8-o2-6kL">
                                         <rect key="frame" x="61" y="166" width="172" height="30"/>
@@ -428,6 +439,9 @@
                                         <state key="normal" title="Generate background color">
                                             <color key="titleColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="generateAvatarColorPressed:" destination="usc-WA-Se3" eventType="touchUpInside" id="2nj-SR-ezk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -451,6 +465,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ReW-c1-RfE"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTxt" destination="0xU-wM-SJw" id="XBV-dI-IZ5"/>
+                        <outlet property="passwordTxt" destination="jd6-48-X1X" id="QOt-d8-a3S"/>
+                        <outlet property="userImg" destination="xBY-gg-utn" id="J1B-uJ-VDE"/>
+                        <outlet property="usernameTxt" destination="imt-H8-tKU" id="BfG-te-9Uf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hrf-e6-ULz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
