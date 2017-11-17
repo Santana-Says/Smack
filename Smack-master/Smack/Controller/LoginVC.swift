@@ -12,11 +12,11 @@ class LoginVC: UIViewController {
 
     @IBOutlet weak var usernameTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUpView()
     }
 
     @IBAction func cancelBtnPressed(_ sender: UIButton) {
@@ -24,18 +24,38 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginBtnPressed(_ sender: ButtonView) {
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
+        
         guard let username = usernameTxt.text, usernameTxt.text != "" else {return}
         guard let password = passwordTxt.text, passwordTxt.text != "" else {return}
         
         AuthService.instance.loginUser(email: username, password: password) { (success) in
             if success {
-                print("Logged in user!", AuthService.instance.authToken)
+                self.spinner.isHidden = true
+                self.spinner.stopAnimating()
+                
+                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
     
     @IBAction func createAccountBtnPressed(_ sender: UIButton) {
         performSegue(withIdentifier: TO_CREATE_ACCOUNT, sender: self)
+    }
+    
+    func setUpView() {
+        spinner.isHidden = true
+        usernameTxt.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
+        passwordTxt.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateAccountVC.handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        view.endEditing(true)
     }
     
 }
