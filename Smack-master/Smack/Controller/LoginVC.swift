@@ -36,10 +36,8 @@ class LoginVC: UIViewController {
                     self.spinner.isHidden = true
                     self.spinner.stopAnimating()
                     
-                    MessageService.instance.getAllChannels(completion: { (success) in
-                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                    NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 })
             }
         }

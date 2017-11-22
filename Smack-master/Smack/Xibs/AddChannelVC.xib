@@ -19,10 +19,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddChannelVC" customModule="Smack" customModuleProvider="target">
             <connections>
                 <outlet property="bgView" destination="2i7-tr-yL0" id="78y-qQ-rlf"/>
-                <outlet property="description" destination="07c-vp-daM" id="lJG-ui-UeQ"/>
                 <outlet property="descriptionTxt" destination="07c-vp-daM" id="bIS-ge-GGL"/>
-                <outlet property="onCloseModalPressed" destination="XG4-dQ-xXc" id="tor-aN-7nS"/>
-                <outlet property="title" destination="haE-5k-P1a" id="CvQ-8V-zyA"/>
                 <outlet property="titleTxt" destination="haE-5k-P1a" id="JN4-AG-fb7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -44,7 +41,7 @@
                             <rect key="frame" x="331" y="15" width="28" height="28"/>
                             <state key="normal" image="closeButton"/>
                             <connections>
-                                <action selector="onCloseModalPressed:" destination="-1" eventType="touchUpInside" id="IUX-Zl-pWd"/>
+                                <action selector="onCloseModalPressed:" destination="-1" eventType="touchUpInside" id="AQ9-Vk-wEn"/>
                             </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="cND-CM-Kx0">
@@ -63,7 +60,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="294" height="20"/>
                                             <color key="textColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="next"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PH-Gx-mxz">
                                             <rect key="frame" x="0.0" y="40" width="294" height="2"/>
@@ -76,7 +73,7 @@
                                             <rect key="frame" x="0.0" y="62" width="294" height="20"/>
                                             <color key="textColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                            <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="done"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5o-dI-sGp">
                                             <rect key="frame" x="0.0" y="102" width="294" height="2"/>
@@ -86,6 +83,16 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="haE-5k-P1a" secondAttribute="trailing" id="0FJ-hr-ZBP"/>
+                                        <constraint firstItem="8PH-Gx-mxz" firstAttribute="leading" secondItem="hKM-Xm-DOR" secondAttribute="leading" id="EWy-6E-yd5"/>
+                                        <constraint firstItem="G5o-dI-sGp" firstAttribute="leading" secondItem="hKM-Xm-DOR" secondAttribute="leading" id="FIi-NU-aca"/>
+                                        <constraint firstItem="07c-vp-daM" firstAttribute="leading" secondItem="hKM-Xm-DOR" secondAttribute="leading" id="QYC-dY-ly7"/>
+                                        <constraint firstAttribute="trailing" secondItem="G5o-dI-sGp" secondAttribute="trailing" id="W1M-F8-ljr"/>
+                                        <constraint firstAttribute="trailing" secondItem="8PH-Gx-mxz" secondAttribute="trailing" id="hYL-fZ-PJx"/>
+                                        <constraint firstItem="haE-5k-P1a" firstAttribute="leading" secondItem="hKM-Xm-DOR" secondAttribute="leading" id="kwv-6T-gdh"/>
+                                        <constraint firstAttribute="trailing" secondItem="07c-vp-daM" secondAttribute="trailing" id="ntm-Xy-I6m"/>
+                                    </constraints>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4T-cS-vd2" customClass="ButtonView" customModule="Smack" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="214" width="294" height="50"/>
@@ -103,18 +110,21 @@
                                 </button>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="hKM-Xm-DOR" firstAttribute="leading" secondItem="cND-CM-Kx0" secondAttribute="leading" id="3vZ-PU-P5P"/>
                                 <constraint firstAttribute="trailing" secondItem="e4T-cS-vd2" secondAttribute="trailing" id="N5D-jd-00Q"/>
+                                <constraint firstAttribute="trailing" secondItem="hKM-Xm-DOR" secondAttribute="trailing" id="WMo-xE-1Hh"/>
                                 <constraint firstItem="e4T-cS-vd2" firstAttribute="leading" secondItem="cND-CM-Kx0" secondAttribute="leading" id="jzo-kE-vc8"/>
                             </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="cND-CM-Kx0" firstAttribute="leading" secondItem="t3w-oe-CEd" secondAttribute="leading" constant="40" id="D8C-o9-kQS"/>
                         <constraint firstItem="XG4-dQ-xXc" firstAttribute="top" secondItem="t3w-oe-CEd" secondAttribute="top" constant="15" id="HNP-Fw-xiM"/>
+                        <constraint firstAttribute="trailing" secondItem="cND-CM-Kx0" secondAttribute="trailing" constant="40" id="Hnz-e6-t0C"/>
                         <constraint firstAttribute="trailing" secondItem="XG4-dQ-xXc" secondAttribute="trailing" constant="15" id="LNF-e6-Cpf"/>
                         <constraint firstItem="cND-CM-Kx0" firstAttribute="centerY" secondItem="t3w-oe-CEd" secondAttribute="centerY" id="VPO-kB-Bfb"/>
                         <constraint firstAttribute="height" constant="380" id="o6V-FP-U54"/>
-                        <constraint firstItem="cND-CM-Kx0" firstAttribute="centerX" secondItem="t3w-oe-CEd" secondAttribute="centerX" id="piJ-X9-XK8"/>
                     </constraints>
                 </view>
             </subviews>
