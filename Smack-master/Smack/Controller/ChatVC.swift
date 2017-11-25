@@ -16,6 +16,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var messageTxtBox: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sendBtn: UIButton!
+    @IBOutlet weak var TypingUsersLbl: UILabel!
     
     //Variables
     var isTyping = false
@@ -47,6 +48,35 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
                     self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: false)
                 }
+            }
+        }
+        
+        SocketService.instance.getTypingUsers { (typingUsers) in
+            guard let channelId = MessageService.instance.selectedChannel?.id else {return}
+            var names = ""
+            var numTypers = 0
+            
+            for (typingUser, channel) in typingUsers {
+                if typingUser != UserDataService.instance.name && channel == channelId {
+                    if names == "" {
+                        names = typingUser
+                    } else {
+                        names = "\(names), \(typingUser)"
+                    }
+                    numTypers += 1
+                }
+            }
+            
+            if numTypers > 0 && AuthService.instance.isLoggedIn == true {
+                var verb = "is"
+                if numTypers > 1 {
+                    verb = "are"
+                }
+                self.TypingUsersLbl.text = "\(names) \(verb) typing a message"
+                print(self.TypingUsersLbl.text!)
+            } else {
+                self.TypingUsersLbl.text = ""
+                print("They stopped typing")
             }
         }
         
@@ -99,13 +129,21 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         getMessages()
     }
     
+    func stoppedTyping(_ channelId: String) {
+        isTyping = false
+        sendBtn.isHidden = true
+        SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
+    }
+    
     @IBAction func messageBoxEditing(_ sender: UITextField) {
+        guard let channelId = MessageService.instance.selectedChannel?.id else {return}
+        
         if messageTxtBox.text == "" {
-            isTyping = false
-            sendBtn.isHidden = true
+            stoppedTyping(channelId)
         } else {
             if isTyping == false {
                 sendBtn.isHidden = false
+                SocketService.instance.socket.emit("startType", UserDataService.instance.name, channelId)
             }
             isTyping = true
         }
@@ -141,7 +179,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             SocketService.instance.addMessages(messageBody: message, userId: UserDataService.instance.id, channelId: channelId, completion: { (success) in
                 if success {
                     self.messageTxtBox.text = ""
-                    print("Message sent........")
+                    self.stoppedTyping(channelId)
                     self.messageTxtBox.resignFirstResponder()
                 }
             })
