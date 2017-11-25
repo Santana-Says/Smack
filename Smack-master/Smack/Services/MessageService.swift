@@ -25,7 +25,7 @@ class MessageService {
                     for item in json {
                         let name = item["name"].stringValue
                         let channelDesciption = item["description"].stringValue
-                        let id = item["id"].stringValue
+                        let id = item["_id"].stringValue
                         let channel = Channel(channelTitle: name, channelDescription: channelDesciption, id: id)
                         
                         self.channels.append(channel)
@@ -59,9 +59,11 @@ class MessageService {
                         self.messages.append(message)
                     }
                 }
+                print("Messages............")
+                print(self.messages)
                 completion(true)
             } else {
-                debugPrint(respone.result.error as Any)
+                debugPrint(response.result.error as Any)
                 completion(false)
             }
         }

@@ -31,6 +31,14 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    @objc func userDataDidChange(_ notif: Notification) {
+        setupUserInfo()
+    }
+    
+    @objc func channelIsLoaded(_ notif: Notification) {
+        tableView.reloadData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         setupUserInfo()
     }
@@ -86,14 +94,6 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             userImg.backgroundColor = UIColor.clear
             tableView.reloadData()
         }
-    }
-    
-    @objc func userDataDidChange(_ notif: Notification) {
-        setupUserInfo()
-    }
-    
-    @objc func channelIsLoaded(_ notif: Notification) {
-        tableView.reloadData()
     }
     
     @IBAction func addChannelPressed(_ sender: UIButton) {
