@@ -125,7 +125,6 @@ class AuthService {
                 completion(true)
             } else {
                 completion(false)
-                print("findUserByEmail failed....")
                 debugPrint(response.result.error as Any)
             }
         }

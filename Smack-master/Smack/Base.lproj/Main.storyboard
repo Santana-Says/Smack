@@ -124,7 +124,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:33 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nw-Qo-BED">
-                                                    <rect key="frame" x="154" y="10.666666666666664" width="61" height="17"/>
+                                                    <rect key="frame" x="158" y="10.666666666666664" width="61" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -135,7 +135,7 @@
                                                 <constraint firstItem="bUE-wM-MC9" firstAttribute="leading" secondItem="7be-ww-nJE" secondAttribute="trailing" constant="12" id="1w9-2X-lOk"/>
                                                 <constraint firstItem="4da-RG-g5V" firstAttribute="leading" secondItem="7be-ww-nJE" secondAttribute="trailing" constant="12" id="7hX-0e-Smm"/>
                                                 <constraint firstItem="bUE-wM-MC9" firstAttribute="top" secondItem="7be-ww-nJE" secondAttribute="top" id="I8V-5K-Kcm"/>
-                                                <constraint firstItem="6nw-Qo-BED" firstAttribute="leading" secondItem="bUE-wM-MC9" secondAttribute="trailing" constant="6" id="QhC-KK-FlW"/>
+                                                <constraint firstItem="6nw-Qo-BED" firstAttribute="leading" secondItem="bUE-wM-MC9" secondAttribute="trailing" constant="10" id="QhC-KK-FlW"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6nw-Qo-BED" secondAttribute="trailing" constant="20" symbolic="YES" id="RaM-xq-ijc"/>
                                                 <constraint firstItem="7be-ww-nJE" firstAttribute="leading" secondItem="epJ-3Y-fOj" secondAttribute="leadingMargin" id="bXG-Hr-CNp"/>
                                                 <constraint firstItem="4da-RG-g5V" firstAttribute="top" secondItem="bUE-wM-MC9" secondAttribute="bottom" constant="8" id="mgT-mO-2xo"/>

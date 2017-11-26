@@ -52,15 +52,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
-//        SocketService.instance.getChatMessage { (success) in
-//            if success {
-//                self.tableView.reloadData()
-//                if MessageService.instance.messages.count > 0 {
-//                    let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
-//                    self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: false)
-//                }
-//            }
-//        }
         
         SocketService.instance.getTypingUsers { (typingUsers) in
             guard let channelId = MessageService.instance.selectedChannel?.id else {return}
@@ -84,10 +75,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     verb = "are"
                 }
                 self.TypingUsersLbl.text = "\(names) \(verb) typing a message"
-                print(self.TypingUsersLbl.text!)
             } else {
                 self.TypingUsersLbl.text = ""
-                print("They stopped typing")
             }
         }
         
@@ -118,7 +107,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell {
             let message = MessageService.instance.messages[indexPath.row]
-            print("Message: \(message)")
             cell.configureCell(message: message)
             return cell
         } else {
@@ -164,7 +152,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         MessageService.instance.getAllChannels { (success) in
             if success {
                 if MessageService.instance.channels.count > 0 {
-                    print("Fetched \(MessageService.instance.channels.count) messages.........")
                     MessageService.instance.selectedChannel = MessageService.instance.channels[0]
                     self.updateWithChannel()
                 } else {
